@@ -77,12 +77,12 @@ Definition of the different states and their transition (transition functions)
 [Link url](https://www.figma.com/file/529k1tASOu7VO1RUfxclgo/M1-Project-Instant-lights?node-id=2%3A3)
 
 ### Trello
-[Link url](https://trello.com)
+[Link url](https://trello.com/b/ilI2Wbmb/m1-project)
 
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](http://github.com)
+[Link Repo](https://github.com/sumi0820/instant-lights)
 [Link Deploy](http://github.com)
 
 
