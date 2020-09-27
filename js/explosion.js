@@ -1,4 +1,4 @@
-class Enemy {
+class Explosion {
     constructor(x, y, radius, color, velocity) {
       this.x = x;
       this.y = y;
@@ -22,4 +22,5 @@ class Enemy {
       this.y = this.y + this.velocity.y;
     }
   }
+  
   

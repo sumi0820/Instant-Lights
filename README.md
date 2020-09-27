@@ -8,11 +8,11 @@ Instant Lights is a simple shooting game.
 MVP definition, deliverables.
 
 - Player targets and shoots the enemies by clicking the mouse.
-- Player also moves by keys and dodge the enemies.
 - The enemies appear from different angles outside of the screen.
 - Once Player's beam hits the enemy, enemy is gone from the screen.
 - If Player hits the enemy or 60 seconds passes, game is over.
 - Display the score
+- Player also moves by keys and dodge the enemies.
 
 ## Backlog
 - Animation(Splash, collision, background color)
