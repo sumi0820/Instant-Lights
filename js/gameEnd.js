@@ -36,7 +36,7 @@ const gameEndAnimation = () => {
     tl.to("#main", 0.8, { backgroundColor: "#1A1A2E" });
 
     player.score = 0;
-    player.timer = 0
+    player.overKill = false
     beams = [];
     enemies = [];
 

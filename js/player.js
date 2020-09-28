@@ -6,6 +6,7 @@ class Player {
     this.color = color;
     this.score = score;
     this.intervalId = 0;
+    this.overKill = false;
   }
 
   draw() {

@@ -30,11 +30,11 @@ const removeParticle = (animation) => {
 function particleEvent(enemy) {
   let particles = [];
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 11; i++) {
     let particle = new Particle(
       enemy.x,
       enemy.y,
-      anime.random(20, 50),
+      anime.random(24, 40),
       randomParticleColor(particleColors)
     );
     particles.push(particle);
@@ -44,7 +44,7 @@ function particleEvent(enemy) {
     targets: particles,
     x: function (particle) {
       return (
-        particle.x + anime.random(particle.radius + 10, -particle.radius - 10)
+        particle.x + anime.random(particle.radius, -particle.radius)
       );
     },
     y: function (particle) {

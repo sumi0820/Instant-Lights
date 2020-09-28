@@ -11,7 +11,7 @@ let ball;
 let balls = [];
 function init() {
   balls = [];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 75; i++) {
     let ballsRadius = randomNum(50, 10);
     let ballsX = randomNum(canvas.width, -1);
     let ballsY = randomNum(canvas.height - ballsRadius, -1);

@@ -67,7 +67,7 @@ const title = () => {
 };
 
 let splashScreenMusic = new Audio();
-splashScreenMusic.src = "../audio/Kosu - Unminus.com.mp3"
+splashScreenMusic.src = "../audio/Kosu - Unminus.com.mp3";
 // let particleSoundEffect = new Audio();
 // particleSoundEffect.src = "../audio/blast.mp3"
 
@@ -187,29 +187,31 @@ const animateGame = () => {
       };
 
       if (dist - enemy.radius - beam.radius < 1) {
-        if (enemy.radius > 20) {
+        if (enemy.radius > 15) {
           gsap.to(enemy, {
             radius: enemy.radius - 5,
           });
           setTimeout(() => {
             removeBeam();
-            player.score = player.score + 20;
+            player.score++;
           }, 0);
-        } else if (enemy.radius > 15 && enemy.radius < 19) {
-          gsap.to(enemy, {
-            radius: enemy.radius - 5,
-          });
+        }
+        // else if (enemy.radius > 15 && enemy.radius < 19) {
+        //   gsap.to(enemy, {
+        //     radius: enemy.radius - 5,
+        //   });
+        //   setTimeout(() => {
+        //     removeBeam();
+        //     player.score = player.score + 10;
+        //   }, 0);
+        // } 
+        else {
           setTimeout(() => {
-            removeBeam();
-            player.score = player.score + 10;
-          }, 0);
-        } else {
-          setTimeout(() => {
-
             particleEvent(enemy);
             removeBeam();
             removeEnemy();
-            player.score++;
+            player.score = player.score + 10;
+
           }, 0);
         }
       }
@@ -218,6 +220,20 @@ const animateGame = () => {
 };
 
 // EVENT HANDLER //
+
+canvasG.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+
+  if (!player.overKill) {
+    setTimeout(() => {
+      enemies.forEach((enemy) => {
+        particleEvent(enemy);
+      });
+      enemies = [];
+    }, 0);
+    player.overKill = true;
+  }
+});
 
 canvasG.addEventListener("click", (event) => {
   // Get angle(radian) of the point where the user click
@@ -237,6 +253,3 @@ canvasG.addEventListener("click", (event) => {
     new Beam(canvasG.width / 2, canvasG.height / 2, 2, "#f6f6f6", beamVelocity)
   );
 });
-
-// animateGame();
-// spawnEnemies();
