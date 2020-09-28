@@ -12,7 +12,7 @@ canvasG.height = innerHeight;
 const colors = [
   "#2185C5",
   "#7ECEFD",
-  "#FFD5CD",
+  "#ffd571",
   "#FF7F66",
   "#D2E603",
   "#5D54A4",
@@ -22,7 +22,7 @@ const colors = [
 const particleColors = [
   "rgba(33,133,197,0.7)",
   "rgba(126, 206, 253,0.7)",
-  "rgba(255,213,205,0.7)",
+  "rgba(255, 213, 113,0.7)",
   "rgba(255,127,102,0.7)",
   "rgba(210,230,3,0.7)",
   "rgba(93,84,164,0.7)",
@@ -46,14 +46,14 @@ const title = () => {
   const FONT_NAME = "Oswald-Regular";
   function renderText() {
     ctx.font = `48px "${FONT_NAME}"`;
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#f6f6f6";
 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("Instant Lights", canvas.width / 2, canvas.height / 2 - 10);
 
     ctx.font = `16px "${FONT_NAME}"`;
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#f6f6f6";
 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -123,6 +123,7 @@ let animationId;
 const animateGame = () => {
   animationId = requestAnimationFrame(animateGame);
   ctxG.clearRect(0, 0, canvasG.width, canvasG.height);
+
   player.draw();
 
   beams.forEach((beam, beamsIndex) => {
@@ -151,13 +152,14 @@ const animateGame = () => {
 
     // Player vs Enemy
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
-    if (dist - enemy.radius - player.radius < 1) {
+    if (dist - enemy.radius - player.radius < 1 || player.timer === 10) {
       animations = [];
       cancelAnimationFrame(animationId);
-
+      player.stopChangeBackground();
       TweenMax.to("#main", 2, { backgroundColor: "#f6f6f6" });
       TweenMax.delayedCall(0.01, clearCanvas);
       TweenMax.delayedCall(2, gameEndAnimation);
+
       console.log("game end");
     }
 
@@ -170,10 +172,6 @@ const animateGame = () => {
       const removeBeam = () => {
         beams.splice(beamsIndex, 1);
       };
-
-      //============================================================//
-
-      //============================================================//
 
       if (dist - enemy.radius - beam.radius < 1) {
         if (enemy.radius > 20) {

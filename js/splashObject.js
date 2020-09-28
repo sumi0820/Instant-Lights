@@ -16,9 +16,10 @@ class Ball {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     ctx.fillStyle = this.color;
+    ctx.shadowColor = "#f6f6f6";
+    ctx.shadowBlur = 10;
     ctx.fill();
     ctx.closePath();
-    ctx.globalCompositeOperation = 'destination-over'
   }
 
   update() {

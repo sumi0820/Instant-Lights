@@ -36,8 +36,10 @@ const gameEndAnimation = () => {
     tl.to("#main", 0.8, { backgroundColor: "#1A1A2E" });
 
     player.score = 0;
+    player.timer = 0
     beams = [];
     enemies = [];
+
 
     console.log(
       "Enemy:",
@@ -49,6 +51,8 @@ const gameEndAnimation = () => {
     );
 
     TweenMax.delayedCall(3, spawnEnemies());
+
+    player.changeBackground();
     animateGame();
   });
 };

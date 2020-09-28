@@ -24,12 +24,12 @@ function init() {
 function animateSplash() {
   requestAnimationFrame(animateSplash);
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  title();
   for (let i = 0; i < balls.length; i++) {
     balls[i].update();
   }
-  title();
 }
 
 init();
@@ -51,4 +51,6 @@ canvas.addEventListener("click", () => {
 
   animateGame();
   spawnEnemies();
+
+  player.changeBackground()
 });
