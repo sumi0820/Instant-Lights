@@ -73,11 +73,12 @@ Definition of the different states and their transition (transition functions)
 ## Links
 
 
-### Figma
+### Figma - wireframe
 [Link url](https://www.figma.com/file/529k1tASOu7VO1RUfxclgo/M1-Project-Instant-lights?node-id=2%3A3)
 
-### Trello
-[Link url](https://trello.com/b/ilI2Wbmb/m1-project)
+
+### Notion - Idea/Task manager
+[Link url](https://www.notion.so/M1-Project-Instant-Lights-da80a43dbe1e416e9e91013187095c60)
 
 
 ### Git

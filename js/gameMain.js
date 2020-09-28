@@ -19,6 +19,16 @@ const colors = [
   "#C3AED6",
   "#FF9A76",
 ];
+const particleColors = [
+  "rgba(33,133,197,0.7)",
+  "rgba(126, 206, 253,0.7)",
+  "rgba(255,213,205,0.7)",
+  "rgba(255,127,102,0.7)",
+  "rgba(210,230,3,0.7)",
+  "rgba(93,84,164,0.7)",
+  "rgba(195,174,214,0.7)",
+  "rgba(255,154,118,0.7)",
+];
 
 const randomNum = (max, min) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -26,6 +36,10 @@ const randomNum = (max, min) => {
 
 const randomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
+};
+
+const randomParticleColor = () => {
+  return particleColors[Math.floor(Math.random() * particleColors.length)];
 };
 
 const title = () => {
@@ -149,10 +163,16 @@ const animateGame = () => {
     // Enemy vs Beam
     beams.forEach((beam, beamsIndex) => {
       const dist = Math.hypot(beam.x - enemy.x, beam.y - enemy.y);
-      const remove = () => {
+      const removeEnemy = () => {
         enemies.splice(enemiesIndex, 1);
+      };
+      const removeBeam = () => {
         beams.splice(beamsIndex, 1);
       };
+
+      //============================================================//
+
+      //============================================================//
 
       if (dist - enemy.radius - beam.radius < 1) {
         if (enemy.radius > 20) {
@@ -160,17 +180,25 @@ const animateGame = () => {
             radius: enemy.radius - 5,
           });
           setTimeout(() => {
-            beams.splice(beamsIndex, 1);
-            player.score = player.score + 10;
+            // particleAction(enemy);
+            removeBeam();
+            player.score = player.score + 20;
           }, 0);
         } else if (enemy.radius > 15 && enemy.radius < 19) {
+          gsap.to(enemy, {
+            radius: enemy.radius - 5,
+          });
           setTimeout(() => {
-            remove();
-            player.score = player.score + 5;
+            // particleAction(enemy);
+            removeBeam();
+            player.score = player.score + 10;
           }, 0);
         } else {
           setTimeout(() => {
-            remove();
+            particleAction(enemy);
+            animatePart()
+            removeBeam();
+            removeEnemy();
             player.score++;
           }, 0);
         }
