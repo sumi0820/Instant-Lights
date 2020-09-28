@@ -17,6 +17,7 @@ class Particle {
   update() {
     this.draw();
   }
+
 }
 
 let animations = [];

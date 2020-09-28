@@ -66,6 +66,19 @@ const title = () => {
   document.fonts.load('10pt "Oswald-Regular"').then(renderText);
 };
 
+let splashScreenMusic = new Audio();
+splashScreenMusic.src = "../audio/Kosu - Unminus.com.mp3"
+// let particleSoundEffect = new Audio();
+// particleSoundEffect.src = "../audio/blast.mp3"
+
+// const explosion = () => {
+//   particleSoundEffect.play();
+//   particleSoundEffect.volume = 0.2
+//   setTimeout(() => {
+//     particleSoundEffect.pause()
+//   }, 1500);
+// }
+
 //====INSTANCE CREATION====//
 // PLAYER //
 
@@ -192,7 +205,7 @@ const animateGame = () => {
           }, 0);
         } else {
           setTimeout(() => {
-            // particleAction(enemy);
+
             particleEvent(enemy);
             removeBeam();
             removeEnemy();
