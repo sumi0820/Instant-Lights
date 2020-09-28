@@ -31,7 +31,7 @@ const gameEndAnimation = () => {
     scoreScreen.classList.remove("gameEnd");
     bg.parentNode.removeChild(bg);
 
-    // tl.from(".slider", { y: "100%", duration: 1.5, delay: 0.5 });
+    tl.from(".slider", { y: "100%", duration: 1.5, delay: 0.5 });
     tl.from("#main", { y: "100%", duration: 1 }, "-=2");
     tl.to("#main", 0.8, { backgroundColor: "#1A1A2E" });
 
@@ -50,9 +50,13 @@ const gameEndAnimation = () => {
       beams.length
     );
 
-    TweenMax.delayedCall(3, spawnEnemies());
-
+    splashBgm.pause();
+    splashBgm.currentTime = 0;
+    transitionSe()
+    TweenMax.delayedCall(2, gameMusic);
+    
+    TweenMax.delayedCall(1, animateGame);
+    TweenMax.delayedCall(4, spawnEnemies());
     player.changeBackground();
-    animateGame();
   });
 };

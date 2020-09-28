@@ -21,20 +21,25 @@ class Particle {
 }
 
 let animations = [];
+let particles = [];
 
 const removeParticle = (animation) => {
-  var index = animations.indexOf(animation);
-  if (index > -1) animations.splice(index, 1);
+
+  setTimeout(() => {
+    var index = animations.indexOf(animation);
+    if (index > -1) animations.splice(index, 1);
+    particles = []
+    console.log(particles);
+  }, 0);
 };
 
 function particleEvent(enemy) {
-  let particles = [];
-
-  for (let i = 0; i < 11; i++) {
+  setTimeout(() => {
+  for (let i = 0; i < 10; i++) {
     let particle = new Particle(
       enemy.x,
       enemy.y,
-      anime.random(24, 40),
+      anime.random(24, 50),
       randomParticleColor(particleColors)
     );
     particles.push(particle);
@@ -44,7 +49,7 @@ function particleEvent(enemy) {
     targets: particles,
     x: function (particle) {
       return (
-        particle.x + anime.random(particle.radius, -particle.radius)
+        particle.x + anime.random(particle.radius+10, -particle.radius+10)
       );
     },
     y: function (particle) {
@@ -55,12 +60,13 @@ function particleEvent(enemy) {
     },
     radius: 0,
     easing: "easeOutExpo",
-    duration: anime.random(1000, 1300),
+    duration: anime.random(500, 1000),
     complete: removeParticle,
   });
 
   animations.push(particlesAnimation);
   animatePart();
+}, 0);
 }
 
 function animatePart() {

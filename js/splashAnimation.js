@@ -34,8 +34,7 @@ function animateSplash() {
   }
 }
 
-splashScreenMusic.play();
-splashScreenMusic.volume = 0.5
+splashMusic()
 init();
 animateSplash();
 
@@ -55,9 +54,13 @@ canvas.addEventListener("click", () => {
 
   tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
   tl.to("#splash", { y: "-100%", duration: 1 }, "-=2");
+  
   TweenMax.to("#main", 3, { backgroundColor: '#1A1A2E' });
-  splashScreenMusic.pause();
+  splashBgm.pause();
+  splashBgm.currentTime = 0;
+  transitionSe()
 
+  TweenMax.delayedCall(2, gameMusic);
   TweenMax.delayedCall(1, animateGame);
   TweenMax.delayedCall(1, spawnEnemies);
   player.changeBackground()

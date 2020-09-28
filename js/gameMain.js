@@ -66,10 +66,16 @@ const title = () => {
   document.fonts.load('10pt "Oswald-Regular"').then(renderText);
 };
 
-let splashScreenMusic = new Audio();
-splashScreenMusic.src = "../audio/Kosu - Unminus.com.mp3";
+let splashBgm = new Audio();
+splashBgm.src = "../audio/Kosu - Unminus.com.mp3";
+
+const splashMusic = () => {
+  splashBgm.play();
+  splashBgm.volume = 0.2;
+};
+
 // let particleSoundEffect = new Audio();
-// particleSoundEffect.src = "../audio/blast.mp3"
+// particleSoundEffect.src = "../audio/punch-high2.mp3"
 
 // const explosion = () => {
 //   particleSoundEffect.play();
@@ -78,6 +84,35 @@ splashScreenMusic.src = "../audio/Kosu - Unminus.com.mp3";
 //     particleSoundEffect.pause()
 //   }, 1500);
 // }
+let transition = new Audio();
+transition.src = "../audio/slow-motion-end1.mp3";
+
+const transitionSe = () => {
+  transition.play();
+  transition.volume = 0.5;
+};
+
+let lose = new Audio();
+lose.src = "../audio/buun1.mp3";
+
+const gameEndMusic = () => {
+  lose.play();
+  lose.volume = 0.2;
+};
+
+let mainBgm = new Audio();
+mainBgm.src = "../audio/Berlin Dream - Unminus.com.mp3";
+
+const gameMusic = () => {
+  mainBgm.play();
+  mainBgm.volume = 0.2;
+};
+
+const gameMusicStop = () => {
+  mainBgm.pause();
+  mainBgm.currentTime = 0;
+};
+
 
 //====INSTANCE CREATION====//
 // PLAYER //
@@ -136,6 +171,7 @@ let animationId;
 const animateGame = () => {
   animationId = requestAnimationFrame(animateGame);
   ctxG.clearRect(0, 0, canvasG.width, canvasG.height);
+  // TweenMax.delayedCall(2, gameMusic);
 
   player.draw();
 
@@ -167,8 +203,13 @@ const animateGame = () => {
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
     if (dist - enemy.radius - player.radius < 1 || player.timer === 10) {
       animations = [];
+      gameEndMusic()
+      TweenMax.delayedCall(0.5, gameMusicStop);
+      TweenMax.delayedCall(1, splashMusic);
+
       cancelAnimationFrame(animationId);
       player.stopChangeBackground();
+
       TweenMax.to("#main", 2, { backgroundColor: "#f6f6f6" });
       TweenMax.delayedCall(0.01, clearCanvas);
       TweenMax.delayedCall(2, gameEndAnimation);
@@ -204,14 +245,13 @@ const animateGame = () => {
         //     removeBeam();
         //     player.score = player.score + 10;
         //   }, 0);
-        // } 
+        // }
         else {
           setTimeout(() => {
             particleEvent(enemy);
             removeBeam();
             removeEnemy();
             player.score = player.score + 10;
-
           }, 0);
         }
       }
