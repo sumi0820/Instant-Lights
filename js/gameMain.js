@@ -152,6 +152,7 @@ const animateGame = () => {
     // Player vs Enemy
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
     if (dist - enemy.radius - player.radius < 1) {
+      animations = [];
       cancelAnimationFrame(animationId);
 
       TweenMax.to("#main", 2, { backgroundColor: "#f6f6f6" });
@@ -180,7 +181,6 @@ const animateGame = () => {
             radius: enemy.radius - 5,
           });
           setTimeout(() => {
-            // particleAction(enemy);
             removeBeam();
             player.score = player.score + 20;
           }, 0);
@@ -189,14 +189,13 @@ const animateGame = () => {
             radius: enemy.radius - 5,
           });
           setTimeout(() => {
-            // particleAction(enemy);
             removeBeam();
             player.score = player.score + 10;
           }, 0);
         } else {
           setTimeout(() => {
-            particleAction(enemy);
-            animatePart()
+            // particleAction(enemy);
+            particleEvent(enemy);
             removeBeam();
             removeEnemy();
             player.score++;
