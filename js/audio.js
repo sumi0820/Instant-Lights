@@ -13,9 +13,17 @@ particleSoundEffect.src = "../audio/packun_eating.mp3";
 const explosion = () => {
   particleSoundEffect.play();
   particleSoundEffect.volume = 0.2;
-  // setTimeout(() => {
-  //   particleSoundEffect.pause()
-  // }, 1500);
+
+};
+//==================================//
+let rippleSoundEffect = new Audio();
+// rippleSoundEffect.src = "../audio/zapsplat_sound_design_impact_thud_into_whoosh_powerful_002_48744.mp3";
+rippleSoundEffect.src = "../audio/zapsplat_sound_design_whoosh_fast_powerful_with_jet_like_engine_tail_54863.mp3";
+
+const explosion2 = () => {
+  rippleSoundEffect.play();
+  rippleSoundEffect.volume = 0.5;
+
 };
 //==================================//
 

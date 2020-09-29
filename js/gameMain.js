@@ -198,9 +198,9 @@ canvasG.addEventListener("contextmenu", (event) => {
   if (!player.overKill) {
     for (let i = 0; i < 5; i++) {
       rippleEvent(enemies[i]);
-    }~
+    }
     enemies.splice(0, 5);
-    explosion();
+    explosion2();
 
     player.overKill = true;
   }
