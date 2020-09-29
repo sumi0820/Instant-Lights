@@ -12,7 +12,10 @@ class Particle {
     ctxG.fillStyle = this.color;
     ctxG.fill();
     ctxG.closePath();
+    ctxG.globalAlpha = 1;
   }
+
+  
 
   update() {
     this.draw();
@@ -24,7 +27,6 @@ let animations = [];
 let particles = [];
 
 const removeParticle = (animation) => {
-
   setTimeout(() => {
     let index = animations.indexOf(animation);
     if (index > -1) animations.splice(index, 1);

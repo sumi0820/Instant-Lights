@@ -16,15 +16,15 @@ class Ripple {
     ctxG.globalAlpha = this.opacity || 1;
     ctxG.beginPath();
     ctxG.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-    if (this.stroke) {
+    // if (this.stroke) {
       ctxG.strokeStyle = this.stroke.color;
       ctxG.lineWidth = this.stroke.width;
       ctxG.stroke();
-    }
-    if (this.fill) {
-      ctxG.fillStyle = this.fill;
-      ctxG.fill();
-    }
+    // }
+    // if (this.fill) {
+    //   ctxG.fillStyle = this.fill;
+    //   ctxG.fill();
+    // }
     ctxG.closePath();
     ctxG.globalAlpha = 1;
   }
@@ -57,19 +57,3 @@ function rippleEvent(enemy) {
   console.log(animations);
 }
 
-// Ripple.prototype.draw = function () {
-//   ctxG.globalAlpha = this.opacity || 1;
-//   ctxG.beginPath();
-//   ctxG.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-//   if (this.stroke) {
-//     ctxG.strokeStyle = this.stroke.color;
-//     ctxG.lineWidth = this.stroke.width;
-//     ctxG.stroke();
-//   }
-//   if (this.fill) {
-//     ctxG.fillStyle = this.fill;
-//     ctxG.fill();
-//   }
-//   ctxG.closePath();
-//   ctxG.globalAlpha = 1;
-// };

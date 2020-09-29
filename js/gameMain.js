@@ -201,7 +201,7 @@ canvasG.addEventListener("contextmenu", (event) => {
     }
     enemies.splice(0, 5);
     explosion2();
-
+    player.score = player.score + 5;
     player.overKill = true;
   }
 });
