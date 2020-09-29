@@ -2,7 +2,6 @@
 let gravity = 0.2;
 let friction = 0.99;
 
-
 class Ball {
   constructor(x, y, dy, radius, color) {
     this.x = x;
@@ -33,3 +32,26 @@ class Ball {
   }
 }
 
+const title = () => {
+  const FONT_NAME = "Oswald-Regular";
+  function renderText() {
+    ctx.font = `48px "${FONT_NAME}"`;
+    ctx.fillStyle = "#f6f6f6";
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Instant Lights", canvas.width / 2, canvas.height / 2 - 10);
+
+    ctx.font = `16px "${FONT_NAME}"`;
+    ctx.fillStyle = "#f6f6f6";
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(
+      "Press WASD to move. Point and click to shoot.",
+      canvas.width / 2,
+      canvas.height / 2 + 30
+    );
+  }
+  document.fonts.load('10pt "Oswald-Regular"').then(renderText);
+};

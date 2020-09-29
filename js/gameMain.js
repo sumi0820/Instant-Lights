@@ -42,30 +42,6 @@ const randomParticleColor = () => {
   return particleColors[Math.floor(Math.random() * particleColors.length)];
 };
 
-const title = () => {
-  const FONT_NAME = "Oswald-Regular";
-  function renderText() {
-    ctx.font = `48px "${FONT_NAME}"`;
-    ctx.fillStyle = "#f6f6f6";
-
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText("Instant Lights", canvas.width / 2, canvas.height / 2 - 10);
-
-    ctx.font = `16px "${FONT_NAME}"`;
-    ctx.fillStyle = "#f6f6f6";
-
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(
-      "Press WASD to move. Point and click to shoot.",
-      canvas.width / 2,
-      canvas.height / 2 + 30
-    );
-  }
-  document.fonts.load('10pt "Oswald-Regular"').then(renderText);
-};
-
 //====INSTANCE CREATION====//
 // PLAYER //
 
@@ -76,13 +52,26 @@ let score = 0;
 
 const player = new Player(playerX, playerY, playerRadius, "#f6f6f6", score);
 
+// BEAM //
 const beam = new Beam(canvasG.width / 2, canvasG.height / 2, 2, "red", 1);
 let beams = [];
 
 // ENEMY //
+let difficulty = 1;
+let end = false;
+
+const difficultyHandler = () => {
+  let difficultyCounter = setInterval(() => {
+    difficulty++;
+    if (end) {
+      clearInterval(difficultyCounter);
+    }
+  }, 10000);
+};
+
 let enemies = [];
 const spawnEnemies = () => {
-  setInterval(() => {
+  let intervalId = setInterval(() => {
     const enemyRadius = randomNum(30, 10);
     let enemyX;
     let enemyY;
@@ -99,21 +88,21 @@ const spawnEnemies = () => {
     const enemyColor = randomColor(colors);
 
     // Get angle(radian) of the point where the user click
-    const angle = Math.atan2(
-      canvasG.height / 2 - enemyY,
-      canvasG.width / 2 - enemyX
-    );
+    const angle = Math.atan2(player.y - enemyY, player.x - enemyX);
 
     // Get velocity based on the angle
     const enemyVelocity = {
-      x: Math.cos(angle),
-      y: Math.sin(angle),
+      x: Math.cos(angle) * difficulty,
+      y: Math.sin(angle) * difficulty,
     };
 
     enemies.push(
       new Enemy(enemyX, enemyY, enemyRadius, enemyColor, enemyVelocity)
     );
-  }, 1000);
+    if (end) {
+      clearInterval(intervalId);
+    }
+  }, 700);
 };
 
 //====FUNCTIONS====//
@@ -123,7 +112,6 @@ let animationId;
 const animateGame = () => {
   animationId = requestAnimationFrame(animateGame);
   ctxG.clearRect(0, 0, canvasG.width, canvasG.height);
-  // TweenMax.delayedCall(2, gameMusic);
 
   player.draw();
 
@@ -154,15 +142,15 @@ const animateGame = () => {
     // Player vs Enemy
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
     if (dist - enemy.radius - player.radius < 1 || player.timer === 10) {
+      end = true;
       animations = [];
       gameLose();
       TweenMax.delayedCall(0.5, gameMusicStop);
-      TweenMax.delayedCall(0, gameEndMusic());
 
       cancelAnimationFrame(animationId);
       player.stopChangeBackground();
-
       TweenMax.to("#main", 2, { backgroundColor: "#f6f6f6" });
+      TweenMax.delayedCall(5, gameEndMusic());
       TweenMax.delayedCall(0.01, clearCanvas);
       TweenMax.delayedCall(2, gameEndAnimation);
 
@@ -208,25 +196,19 @@ canvasG.addEventListener("contextmenu", (event) => {
   event.preventDefault();
 
   if (!player.overKill) {
-    setTimeout(() => {
-      for (let i = 0; i <= 5; i++) {
-        particleEvent(enemies[i]);
-        enemies.splice(0, 1);
-      }
-      explosion();
-    }, 0);
+    for (let i = 0; i < 5; i++) {
+      rippleEvent(enemies[i]);
+    }~
+    enemies.splice(0, 5);
+    explosion();
+
     player.overKill = true;
   }
 });
 
 canvasG.addEventListener("click", (event) => {
   // Get angle(radian) of the point where the user click
-  const angle = Math.atan2(
-    // event.clientY - canvasG.height / 2,
-    // event.clientX - canvasG.width / 2
-    event.clientY - player.y,
-    event.clientX - player.x
-  );
+  const angle = Math.atan2(event.clientY - player.y, event.clientX - player.x);
 
   // Get velocity based on the angle
   const beamVelocity = {
@@ -235,14 +217,11 @@ canvasG.addEventListener("click", (event) => {
   };
 
   // Draw beam to the position where the user click
-  beams.push(
-    // new Beam(canvasG.width / 2, canvasG.height / 2, 2, "#f6f6f6", beamVelocity)
-    new Beam(player.x, player.y, 2, "#f6f6f6", beamVelocity)
-  );
+  beams.push(new Beam(player.x, player.y, 2, "#f6f6f6", beamVelocity));
 });
 
-let playerXIncrement = 10;
-let playerYIncrement = 10;
+let playerXIncrement = 15;
+let playerYIncrement = 15;
 let isRight = false;
 let isLeft = false;
 let isUp = false;

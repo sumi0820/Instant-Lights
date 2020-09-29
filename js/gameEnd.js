@@ -17,14 +17,6 @@ const gameEndAnimation = () => {
 
   const btn = document.querySelector(".restart");
   const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
-  console.log(
-    "Enemy:",
-    enemies.length,
-    "Score:",
-    player.score,
-    "Beam:",
-    beams.length
-  );
 
   btn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -36,27 +28,21 @@ const gameEndAnimation = () => {
     tl.to("#main", 0.8, { backgroundColor: "#1A1A2E" });
 
     player.score = 0;
-    player.overKill = false
-    player.x = canvasG.width / 2
+    player.overKill = false;
+    player.x = canvasG.width / 2;
     player.y = canvasG.height / 2;
+    difficulty = 1;
+    end = false;
     beams = [];
     enemies = [];
 
-
-    console.log(
-      "Enemy:",
-      enemies.length,
-      "Score:",
-      player.score,
-      "Beam:",
-      beams.length
-    );
+    console.log("Score:", player.score);
 
     endMusic.pause();
     endMusic.currentTime = 0;
-    transitionSe()
+    transitionSe();
     TweenMax.delayedCall(2, gameMusic);
-    
+
     TweenMax.delayedCall(1, animateGame);
     TweenMax.delayedCall(4, spawnEnemies());
     player.changeBackground();

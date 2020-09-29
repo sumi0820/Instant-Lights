@@ -62,6 +62,7 @@ canvas.addEventListener("click", () => {
 
   TweenMax.delayedCall(2, gameMusic);
   TweenMax.delayedCall(1, animateGame);
+  TweenMax.delayedCall(1, difficultyHandler);
   TweenMax.delayedCall(1, spawnEnemies);
   player.changeBackground()
 });

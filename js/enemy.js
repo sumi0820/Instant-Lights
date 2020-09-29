@@ -5,6 +5,7 @@ class Enemy {
       this.radius = radius;
       this.color = color;
       this.velocity = velocity;
+      this.difficulty = false
     }
   
     draw() {
@@ -17,7 +18,6 @@ class Enemy {
   
     update() {
       this.draw();
-  
       this.x = this.x + this.velocity.x;
       this.y = this.y + this.velocity.y;
     }

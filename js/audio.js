@@ -1,10 +1,10 @@
 let splashBgm = new Audio();
-splashBgm.src = ''
+splashBgm.src = "../audio/Chill Trap.mp3"
 // "../audio/Reverie.mp3";
 
 const splashMusic = () => {
   splashBgm.play();
-  splashBgm.volume = 0.05;
+  splashBgm.volume = 0.2;
 };
 //==================================//
 let particleSoundEffect = new Audio();
@@ -19,6 +19,7 @@ const explosion = () => {
 };
 //==================================//
 
+
 let transition = new Audio();
 transition.src = "../audio/slow-motion-end1.mp3";
 
@@ -29,11 +30,12 @@ const transitionSe = () => {
 
 //==================================//
 
+
 let lose = new Audio();
 lose.src = "../audio/buun1.mp3";
 
 let endMusic = new Audio();
-endMusic.src = "../audio/Kosu - Unminus.com.mp3";
+endMusic.src = "../audio/gameEnd.mp3";
 
 const gameLose = () => {
     lose.play();
@@ -51,7 +53,7 @@ const gameEndMusic = () => {
 //==================================//
 
 let mainBgm = new Audio();
-mainBgm.src = "../audio/Berlin Dream - Unminus.com.mp3";
+mainBgm.src = "../audio/A.m. Lofi.mp3";
 
 const gameMusic = () => {
   mainBgm.play();
