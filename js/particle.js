@@ -28,7 +28,7 @@ const removeParticle = (animation) => {
   setTimeout(() => {
     var index = animations.indexOf(animation);
     if (index > -1) animations.splice(index, 1);
-    particles = []
+    particles.splice(0,10)
     console.log(particles);
   }, 0);
 };

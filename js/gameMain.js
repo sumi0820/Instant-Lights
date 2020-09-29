@@ -66,54 +66,6 @@ const title = () => {
   document.fonts.load('10pt "Oswald-Regular"').then(renderText);
 };
 
-let splashBgm = new Audio();
-splashBgm.src = "../audio/Kosu - Unminus.com.mp3";
-
-const splashMusic = () => {
-  splashBgm.play();
-  splashBgm.volume = 0.2;
-};
-
-// let particleSoundEffect = new Audio();
-// particleSoundEffect.src = "../audio/punch-high2.mp3"
-
-// const explosion = () => {
-//   particleSoundEffect.play();
-//   particleSoundEffect.volume = 0.2
-//   setTimeout(() => {
-//     particleSoundEffect.pause()
-//   }, 1500);
-// }
-let transition = new Audio();
-transition.src = "../audio/slow-motion-end1.mp3";
-
-const transitionSe = () => {
-  transition.play();
-  transition.volume = 0.5;
-};
-
-let lose = new Audio();
-lose.src = "../audio/buun1.mp3";
-
-const gameEndMusic = () => {
-  lose.play();
-  lose.volume = 0.2;
-};
-
-let mainBgm = new Audio();
-mainBgm.src = "../audio/Berlin Dream - Unminus.com.mp3";
-
-const gameMusic = () => {
-  mainBgm.play();
-  mainBgm.volume = 0.2;
-};
-
-const gameMusicStop = () => {
-  mainBgm.pause();
-  mainBgm.currentTime = 0;
-};
-
-
 //====INSTANCE CREATION====//
 // PLAYER //
 
@@ -203,9 +155,9 @@ const animateGame = () => {
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
     if (dist - enemy.radius - player.radius < 1 || player.timer === 10) {
       animations = [];
-      gameEndMusic()
+      gameLose();
       TweenMax.delayedCall(0.5, gameMusicStop);
-      TweenMax.delayedCall(1, splashMusic);
+      TweenMax.delayedCall(0, gameEndMusic());
 
       cancelAnimationFrame(animationId);
       player.stopChangeBackground();
@@ -236,19 +188,10 @@ const animateGame = () => {
             removeBeam();
             player.score++;
           }, 0);
-        }
-        // else if (enemy.radius > 15 && enemy.radius < 19) {
-        //   gsap.to(enemy, {
-        //     radius: enemy.radius - 5,
-        //   });
-        //   setTimeout(() => {
-        //     removeBeam();
-        //     player.score = player.score + 10;
-        //   }, 0);
-        // }
-        else {
+        } else {
           setTimeout(() => {
             particleEvent(enemy);
+            explosion();
             removeBeam();
             removeEnemy();
             player.score = player.score + 10;
@@ -266,10 +209,11 @@ canvasG.addEventListener("contextmenu", (event) => {
 
   if (!player.overKill) {
     setTimeout(() => {
-      enemies.forEach((enemy) => {
-        particleEvent(enemy);
-      });
-      enemies = [];
+      for (let i = 0; i <= 5; i++) {
+        particleEvent(enemies[i]);
+        enemies.splice(0, 1);
+      }
+      explosion();
     }, 0);
     player.overKill = true;
   }
@@ -278,8 +222,10 @@ canvasG.addEventListener("contextmenu", (event) => {
 canvasG.addEventListener("click", (event) => {
   // Get angle(radian) of the point where the user click
   const angle = Math.atan2(
-    event.clientY - canvasG.height / 2,
-    event.clientX - canvasG.width / 2
+    // event.clientY - canvasG.height / 2,
+    // event.clientX - canvasG.width / 2
+    event.clientY - player.y,
+    event.clientX - player.x
   );
 
   // Get velocity based on the angle
@@ -290,6 +236,48 @@ canvasG.addEventListener("click", (event) => {
 
   // Draw beam to the position where the user click
   beams.push(
-    new Beam(canvasG.width / 2, canvasG.height / 2, 2, "#f6f6f6", beamVelocity)
+    // new Beam(canvasG.width / 2, canvasG.height / 2, 2, "#f6f6f6", beamVelocity)
+    new Beam(player.x, player.y, 2, "#f6f6f6", beamVelocity)
   );
+});
+
+let playerXIncrement = 10;
+let playerYIncrement = 10;
+let isRight = false;
+let isLeft = false;
+let isUp = false;
+let isDown = false;
+
+window.addEventListener("keydown", (event) => {
+  event.preventDefault();
+  if (event.key == "d" || event.key == "ArrowRight") {
+    isRight = true;
+    isLeft = false;
+  } else if (event.key == "a" || event.key == "ArrowLeft") {
+    isRight = false;
+    isLeft = true;
+  } else if (event.key == "w" || event.key == "ArrowUp") {
+    isUp = true;
+    isDown = false;
+  } else if (event.key == "s" || event.key == "ArrowDown") {
+    isUp = false;
+    isDown = true;
+  }
+  if (isRight && player.x + player.radius < canvasG.width) {
+    player.x += playerXIncrement;
+  } else if (isLeft && player.x - player.radius > 0) {
+    player.x -= playerXIncrement;
+  } else if (isUp && player.y - player.radius * 2 > 0) {
+    player.y -= playerYIncrement;
+  } else if (isDown && player.y + player.radius * 2 < canvasG.height) {
+    player.y += playerYIncrement;
+  }
+});
+
+window.addEventListener("keyup", (event) => {
+  event.preventDefault();
+  isRight = false;
+  isLeft = false;
+  isUp = false;
+  isDown = false;
 });

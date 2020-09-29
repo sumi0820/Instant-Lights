@@ -37,6 +37,8 @@ const gameEndAnimation = () => {
 
     player.score = 0;
     player.overKill = false
+    player.x = canvasG.width / 2
+    player.y = canvasG.height / 2;
     beams = [];
     enemies = [];
 
@@ -50,8 +52,8 @@ const gameEndAnimation = () => {
       beams.length
     );
 
-    splashBgm.pause();
-    splashBgm.currentTime = 0;
+    endMusic.pause();
+    endMusic.currentTime = 0;
     transitionSe()
     TweenMax.delayedCall(2, gameMusic);
     
