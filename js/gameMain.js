@@ -147,6 +147,19 @@ const animateGame = () => {
       gameLose();
       TweenMax.delayedCall(0.5, gameMusicStop);
 
+      TweenMax.fromTo(
+        "#main",
+        0.05,
+        { x: -0.8 },
+        {
+          x: 0.8,
+          repeat: 3,
+          yoyo: true,
+          ease: Sine.easeInOut,
+
+        }
+      );
+
       cancelAnimationFrame(animationId);
       player.stopChangeBackground();
       TweenMax.to("#main", 2, { backgroundColor: "#f6f6f6" });
