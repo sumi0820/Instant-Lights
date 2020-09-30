@@ -34,7 +34,8 @@ function animateSplash() {
   }
 }
 
-splashMusic()
+TweenMax.delayedCall(2, splashMusic);
+
 init();
 animateSplash();
 
