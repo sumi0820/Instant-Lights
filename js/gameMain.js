@@ -150,9 +150,9 @@ const animateGame = () => {
       TweenMax.fromTo(
         "#main",
         0.05,
-        { x: -0.8 },
+        { x: -1 },
         {
-          x: 0.8,
+          x: 1,
           repeat: 3,
           yoyo: true,
           ease: Sine.easeInOut,
@@ -272,4 +272,13 @@ window.addEventListener("keyup", (event) => {
   isLeft = false;
   isUp = false;
   isDown = false;
+});
+
+window.addEventListener("keydown", (event) => {
+  event.preventDefault();
+  if(event.shiftKey){
+    protectPlayer(player)
+    explosion2();
+
+  }
 });

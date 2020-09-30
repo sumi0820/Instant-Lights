@@ -57,3 +57,26 @@ function rippleEvent(enemy) {
   console.log(animations);
 }
 
+function protectPlayer(player) {
+    console.log(player);
+    let shieldSize = player.width * 4;
+  
+    let shield = new Ripple(player.x, player.y, 0, 1, player.color, {
+      width: 3,
+      color: player.color,
+    });
+    console.log(shield);
+  
+    let shieldAnimation = anime({
+      targets: shield,
+      radius: shieldSize,
+      opacity: 0,
+      easing: "easeOutExpo",
+      duration: 900,
+      complete: removeParticle,
+    });
+  
+    animations.push(shieldAnimation);
+    animatePart();
+    console.log(animations);
+  }
