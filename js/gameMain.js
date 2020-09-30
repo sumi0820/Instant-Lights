@@ -99,10 +99,11 @@ const spawnEnemies = () => {
     enemies.push(
       new Enemy(enemyX, enemyY, enemyRadius, enemyColor, enemyVelocity)
     );
+    console.log(enemies);
     if (end) {
       clearInterval(intervalId);
     }
-  }, 700);
+  }, 1000);
 };
 
 //====FUNCTIONS====//
@@ -284,10 +285,10 @@ window.addEventListener("keydown", (event) => {
   event.preventDefault();
   if (event.shiftKey) {
     if (!player.overKill) {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 10; i++) {
         rippleEvent(enemies[i]);
       }
-      enemies.splice(0, 5);
+      enemies.splice(0, 10);
       explosion2();
       player.score = player.score + 5;
       player.overKill = true;

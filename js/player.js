@@ -28,13 +28,13 @@ class Player {
   changeBackground() {
     this.intervalId = setInterval(() => {
       const bgColors = [
-        "#133b5c",
-        "#5d54a4",
+        "#51adcf",
+        "#726a95",
         "#423144",
         "#ffc7c7",
-        "#206a5d",
+        "#006a71",
         "#7d0633",
-        "#cf7500",
+        "#ffc93c",
         "#ff4b5c",
       ];
       const randomBgColor = () => {

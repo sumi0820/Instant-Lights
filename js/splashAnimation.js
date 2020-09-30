@@ -34,7 +34,7 @@ function animateSplash() {
   }
 }
 
-TweenMax.delayedCall(1, splashMusic);
+TweenMax.delayedCall(0.5, splashMusic);
 
 init();
 animateSplash();

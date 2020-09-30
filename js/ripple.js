@@ -72,7 +72,7 @@ function protectPlayer(player) {
     radius: shieldSize,
     opacity: 0,
     easing: "easeOutExpo",
-    duration: 900,
+    duration: 450,
     complete: removeParticle,
   });
 
