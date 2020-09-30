@@ -150,10 +150,10 @@ const animateGame = () => {
       TweenMax.fromTo(
         "#main",
         0.05,
-        { x: -1 },
+        { x: -0.5 },
         {
-          x: 1,
-          repeat: 3,
+          x: 0.5,
+          repeat: 10,
           yoyo: true,
           ease: Sine.easeInOut,
         }
@@ -211,6 +211,7 @@ const animateGame = () => {
       if (distEvsS - enemy.radius - (player.radius + 100) < 1) {
         setTimeout(() => {
           rippleEvent(enemy);
+          // particleEvent(enemy);
           removeEnemy();
         }, 0);
       }
