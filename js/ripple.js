@@ -24,7 +24,7 @@ class Ripple {
     //   ctxG.fillStyle = this.fill;
     //   ctxG.fill();
     // }
-    ctxG.closePath();
+    // ctxG.closePath();
     ctxG.globalAlpha = 1;
   }
 
@@ -79,17 +79,4 @@ function protectPlayer(player) {
   animations.push(shieldAnimation);
   animatePart();
 //   console.log(animations);
-}
-
-function animatePart() {
-  anime({
-    duration: Infinity,
-    update: function () {
-      animations.forEach(function (anim) {
-        anim.animatables.forEach(function (animatable) {
-          animatable.target.draw();
-        });
-      });
-    },
-  });
 }
