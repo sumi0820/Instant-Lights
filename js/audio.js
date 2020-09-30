@@ -1,6 +1,5 @@
 let splashBgm = new Audio();
 splashBgm.src = "./audio/splash-music.mp3";
-// "../audio/Reverie.mp3";
 
 const splashMusic = () => {
   splashBgm.play();
@@ -27,7 +26,7 @@ const explosion2 = () => {
 };
 //==================================//
 let shieldSoundEffect = new Audio();
-// rippleSoundEffect.src = "../audio/zapsplat_sound_design_impact_thud_into_whoosh_powerful_002_48744.mp3";
+
 shieldSoundEffect.src =
   "./audio/explosion3.mp3";
 

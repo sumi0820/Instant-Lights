@@ -41,8 +41,6 @@ class Player {
         return bgColors[Math.floor(Math.random() * bgColors.length)];
       };
       TweenMax.to("#main", 5, { backgroundColor: randomBgColor });
-      player.overKill = false;
-      player.specialEffect = false;
     }, 10000);
   }
 
