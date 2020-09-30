@@ -141,6 +141,7 @@ const animateGame = () => {
 
     // Player vs Enemy
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
+    
     if (dist - enemy.radius - player.radius < 1) {
       end = true;
       animations = [];
@@ -150,9 +151,9 @@ const animateGame = () => {
       TweenMax.fromTo(
         "#main",
         0.05,
-        { x: -0.5 },
+        { x: -1 },
         {
-          x: 0.5,
+          x: 1,
           repeat: 10,
           yoyo: true,
           ease: Sine.easeInOut,
