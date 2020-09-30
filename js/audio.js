@@ -1,5 +1,5 @@
 let splashBgm = new Audio();
-splashBgm.src = "../audio/splash-music.mp3";
+splashBgm.src = "./audio/splash-music.mp3";
 // "../audio/Reverie.mp3";
 
 const splashMusic = () => {
@@ -8,7 +8,7 @@ const splashMusic = () => {
 };
 //==================================//
 let particleSoundEffect = new Audio();
-particleSoundEffect.src = "../audio/explosion.mp3";
+particleSoundEffect.src = "./audio/explosion.mp3";
 
 const explosion = () => {
   particleSoundEffect.play();
@@ -17,9 +17,9 @@ const explosion = () => {
 //==================================//
 
 let rippleSoundEffect = new Audio();
-// rippleSoundEffect.src = "../audio/zapsplat_sound_design_impact_thud_into_whoosh_powerful_002_48744.mp3";
+
 rippleSoundEffect.src =
-  "../audio/explosion2.mp3";
+  "./audio/explosion2.mp3";
 
 const explosion2 = () => {
   rippleSoundEffect.play();
@@ -29,7 +29,7 @@ const explosion2 = () => {
 let shieldSoundEffect = new Audio();
 // rippleSoundEffect.src = "../audio/zapsplat_sound_design_impact_thud_into_whoosh_powerful_002_48744.mp3";
 shieldSoundEffect.src =
-  "../audio/explosion3.mp3";
+  "./audio/explosion3.mp3";
 
 const explosion3 = () => {
   shieldSoundEffect.play();
@@ -38,7 +38,7 @@ const explosion3 = () => {
 //==================================//
 
 let transition = new Audio();
-transition.src = "../audio/transition.mp3";
+transition.src = "./audio/transition.mp3";
 
 const transitionSe = () => {
   transition.play();
@@ -48,10 +48,10 @@ const transitionSe = () => {
 //==================================//
 
 let lose = new Audio();
-lose.src = "../audio/lose.mp3";
+lose.src = "./audio/lose.mp3";
 
 let endMusic = new Audio();
-endMusic.src = "../audio/gameEnd.mp3";
+endMusic.src = "./audio/gameEnd.mp3";
 
 const gameLose = () => {
   lose.play();
@@ -68,7 +68,7 @@ const gameEndMusic = () => {
 
 
 let mainBgm = new Audio();
-mainBgm.src = "../audio/gameMusic.mp3";
+mainBgm.src = "./audio/gameMusic.mp3";
 
 const gameMusic = () => {
   mainBgm.play();
