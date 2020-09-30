@@ -80,3 +80,16 @@ function protectPlayer(player) {
   animatePart();
 //   console.log(animations);
 }
+
+function animatePart() {
+  anime({
+    duration: Infinity,
+    update: function () {
+      animations.forEach(function (anim) {
+        anim.animatables.forEach(function (animatable) {
+          animatable.target.draw();
+        });
+      });
+    },
+  });
+}

@@ -219,6 +219,60 @@ const animateGame = () => {
     }
 
     //==============================================//
+
+    function particleEvent(enemy) {
+      setTimeout(() => {
+      for (let i = 0; i < 10; i++) {
+        let particle = new Particle(
+          enemy.x,
+          enemy.y,
+          anime.random(24, 50),
+          randomParticleColor(particleColors)
+        );
+        particles.push(particle);
+      }
+    
+      let particlesAnimation = anime({
+        targets: particles,
+        x: function (particle) {
+          return (
+            particle.x + anime.random(particle.radius+10, -particle.radius+10)
+          );
+        },
+        y: function (particle) {
+          return (
+            particle.y +
+            anime.random(particle.radius * 1.15 + 10, -particle.radius * 1.15 + 10)
+          );
+        },
+        radius: 0,
+        easing: "easeOutExpo",
+        duration: anime.random(500, 1000),
+        complete: removeParticle,
+      });
+    
+      animations.push(particlesAnimation);
+      animatePart();
+    }, 0);
+    }
+
+    
+    
+    function animatePart() {
+      anime({
+        duration: Infinity,
+        update: function () {
+          animations.forEach(function (anim) {
+            anim.animatables.forEach(function (animatable) {
+              animatable.target.draw();
+            });
+          });
+        },
+      });
+    }
+
+    
+
   });
 };
 
