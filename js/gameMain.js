@@ -142,9 +142,9 @@ const animateGame = () => {
 
     // Clean up enemies array
     if (
-      enemy.x < - 50 ||
+      enemy.x < -50 ||
       enemy.x > canvasG.width + 50 ||
-      enemy.y < - 50 ||
+      enemy.y < -50 ||
       enemy.y > canvasG.height + 50
     ) {
       enemies.splice(enemiesIndex, 1);
@@ -293,10 +293,10 @@ window.addEventListener("keydown", (event) => {
   event.preventDefault();
   if (event.shiftKey) {
     if (!player.overKill) {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 5; i++) {
         rippleEvent(enemies[i]);
       }
-      enemies.splice(0, 10);
+      enemies.splice(0, 5);
       explosion2();
       player.score = player.score + 5;
       player.overKill = true;
