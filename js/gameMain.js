@@ -92,8 +92,8 @@ const spawnEnemies = () => {
 
     // Get velocity based on the angle
     const enemyVelocity = {
-      x: Math.cos(angle) * difficulty,
-      y: Math.sin(angle) * difficulty,
+      x: Math.cos(angle) * randomNum(difficulty, 1),
+      y: Math.sin(angle) * randomNum(difficulty, 1),
     };
 
     enemies.push(
@@ -103,7 +103,7 @@ const spawnEnemies = () => {
     if (end) {
       clearInterval(intervalId);
     }
-  }, 1000);
+  }, 700);
 };
 
 //====FUNCTIONS====//
@@ -140,9 +140,19 @@ const animateGame = () => {
   enemies.forEach((enemy, enemiesIndex) => {
     enemy.update();
 
+    // Clean up enemies array
+    if (
+      enemy.x < - 50 ||
+      enemy.x > canvasG.width + 50 ||
+      enemy.y < - 50 ||
+      enemy.y > canvasG.height + 50
+    ) {
+      enemies.splice(enemiesIndex, 1);
+    }
+
     // Player vs Enemy
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
-    
+
     if (dist - enemy.radius - player.radius < 1) {
       end = true;
       animations = [];
@@ -215,11 +225,9 @@ const animateGame = () => {
           // particleEvent(enemy);
           removeEnemy();
           player.score = player.score + 10;
-
         }, 0);
       }
     }
-
   });
 };
 
@@ -306,7 +314,6 @@ canvasG.addEventListener("contextmenu", (event) => {
 
     setTimeout(() => {
       player.shield = false;
-      
     }, 300);
   }
 });
