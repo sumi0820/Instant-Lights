@@ -200,7 +200,6 @@ const animateGame = () => {
       }
     });
 
-    //==============================================//
     // Shield vs Enemy
     if (player.shield) {
       const distEvsS = Math.hypot(player.x - enemy.x, player.y - enemy.y);
@@ -213,29 +212,16 @@ const animateGame = () => {
           rippleEvent(enemy);
           // particleEvent(enemy);
           removeEnemy();
+          player.score = player.score + 10;
+
         }, 0);
       }
     }
 
-    //==============================================//
   });
 };
 
 // EVENT HANDLER //
-
-canvasG.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
-
-  if (!player.overKill) {
-    for (let i = 0; i < 5; i++) {
-      rippleEvent(enemies[i]);
-    }
-    enemies.splice(0, 5);
-    explosion2();
-    player.score = player.score + 5;
-    player.overKill = true;
-  }
-});
 
 canvasG.addEventListener("click", (event) => {
   // Get angle(radian) of the point where the user click
@@ -273,6 +259,7 @@ window.addEventListener("keydown", (event) => {
     isUp = false;
     isDown = true;
   }
+
   if (isRight && player.x + player.radius < canvasG.width) {
     player.x += playerXIncrement;
   } else if (isLeft && player.x - player.radius > 0) {
@@ -294,15 +281,30 @@ window.addEventListener("keyup", (event) => {
 
 window.addEventListener("keydown", (event) => {
   event.preventDefault();
+  if (event.shiftKey) {
+    if (!player.overKill) {
+      for (let i = 0; i < 5; i++) {
+        rippleEvent(enemies[i]);
+      }
+      enemies.splice(0, 5);
+      explosion2();
+      player.score = player.score + 5;
+      player.overKill = true;
+    }
+  }
+});
 
-  if (event.shiftKey && !player.specialEffect) {
+canvasG.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+  if (!player.specialEffect) {
     protectPlayer(player);
     explosion3();
     player.shield = true;
     player.specialEffect = true;
-  }
 
-  setTimeout(() => {
-    player.shield = false;
-  }, 300);
+    setTimeout(() => {
+      player.shield = false;
+      
+    }, 300);
+  }
 });

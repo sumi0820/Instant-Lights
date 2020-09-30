@@ -42,7 +42,7 @@ class Player {
       };
       TweenMax.to("#main", 5, { backgroundColor: randomBgColor });
       // player.overKill = false;
-      // player.specialEffect = false;
+      player.specialEffect = false;
     }, 10000);
   }
 
