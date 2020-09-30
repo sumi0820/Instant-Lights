@@ -7,13 +7,15 @@ class Player {
     this.score = score;
     this.intervalId = 0;
     this.overKill = false;
+    this.shield = false;
+    this.specialEffect = false;
   }
 
   draw() {
     ctxG.beginPath();
     ctxG.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     ctxG.fillStyle = this.color;
-    ctxG.shadowColor = '#f6f6f6';
+    ctxG.shadowColor = "#f6f6f6";
     ctxG.shadowBlur = 15;
     ctxG.fill();
     ctxG.closePath();
@@ -40,10 +42,11 @@ class Player {
       };
       TweenMax.to("#main", 5, { backgroundColor: randomBgColor });
       player.overKill = false;
+      player.specialEffect = false;
     }, 10000);
   }
 
-  stopChangeBackground(){
+  stopChangeBackground() {
     clearInterval(this.intervalId);
   }
 }

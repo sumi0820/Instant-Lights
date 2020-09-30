@@ -141,7 +141,7 @@ const animateGame = () => {
 
     // Player vs Enemy
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
-    if (dist - enemy.radius - player.radius < 1 || player.timer === 10) {
+    if (dist - enemy.radius - player.radius < 1) {
       end = true;
       animations = [];
       gameLose();
@@ -156,7 +156,6 @@ const animateGame = () => {
           repeat: 3,
           yoyo: true,
           ease: Sine.easeInOut,
-
         }
       );
 
@@ -200,6 +199,26 @@ const animateGame = () => {
         }
       }
     });
+
+    //==============================================//
+    // Shield vs Enemy
+    if (player.shield) {
+      const distEvsS = Math.hypot(player.x - enemy.x, player.y - enemy.y);
+      const removeEnemy = () => {
+        enemies.splice(enemiesIndex, 1);
+      };
+
+      if (distEvsS - enemy.radius - (player.radius + 100) < 1) {
+        setTimeout(() => {
+          rippleEvent(enemy);
+          removeEnemy();
+        }, 0);
+
+        console.log("Shield deploy");
+      }
+    }
+
+    //==============================================//
   });
 };
 
@@ -276,9 +295,16 @@ window.addEventListener("keyup", (event) => {
 
 window.addEventListener("keydown", (event) => {
   event.preventDefault();
-  if(event.shiftKey){
-    protectPlayer(player)
-    explosion2();
 
+  if (event.shiftKey && !player.specialEffect) {
+    protectPlayer(player);
+    explosion3();
+    player.shield = true;
+    player.specialEffect = true;
   }
+
+  setTimeout(() => {
+    player.shield = false;
+  }, 300);
+
 });

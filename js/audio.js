@@ -25,6 +25,16 @@ const explosion2 = () => {
   rippleSoundEffect.volume = 0.5;
 };
 //==================================//
+let shieldSoundEffect = new Audio();
+// rippleSoundEffect.src = "../audio/zapsplat_sound_design_impact_thud_into_whoosh_powerful_002_48744.mp3";
+shieldSoundEffect.src =
+  "../audio/zapsplat_sound_design_cinematic_fast_whoosh_lfe_sub_rumble_55946.mp3";
+
+const explosion3 = () => {
+  shieldSoundEffect.play();
+  shieldSoundEffect.volume = 0.5;
+};
+//==================================//
 
 let transition = new Audio();
 transition.src = "../audio/slow-motion-end1.mp3";

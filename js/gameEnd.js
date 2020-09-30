@@ -29,6 +29,7 @@ const gameEndAnimation = () => {
 
     player.score = 0;
     player.overKill = false;
+    player.specialEffect = false
     player.x = canvasG.width / 2;
     player.y = canvasG.height / 2;
     difficulty = 1;
