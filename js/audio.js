@@ -37,12 +37,12 @@ const explosion3 = () => {
 };
 //==================================//
 
-let transition = new Audio();
-transition.src = "./audio/transition.mp3";
+let transitionSe = new Audio();
+transitionSe.src = "./audio/transition.mp3";
 
 const transition = () => {
-  transition.play();
-  transition.volume = 0.5;
+  transitionSe.play();
+  transitionSe.volume = 0.5;
 };
 
 //==================================//
