@@ -41,20 +41,13 @@ const bgColors = [
   "#ff4b5c",
 ];
 
-const randomNum = (max, min) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+const randomNum = (max, min) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
 
-const randomColor = (colorPalette) => {
-  return colorPalette[Math.floor(Math.random() * colorPalette.length)];
-};
+const randomColor = (colorPalette) =>
+  colorPalette[Math.floor(Math.random() * colorPalette.length)];
 
-const clearCanvas = () => {
-  ctxG.clearRect(0, 0, canvasG.width, canvasG.height);
-};
-
-const removeObject = (objArr, index) => {
-  objArr.splice(index, 1);
-};
-
+const clearCanvas = () => ctxG.clearRect(0, 0, canvasG.width, canvasG.height);
+const removeObject = (objArr, index) => objArr.splice(index, 1);
 let dist = (objA, objB) => Math.hypot(objA.x - objB.x, objA.y - objB.y);
+const tl = gsap.timeline({ defaults: { ease: "power1.out" } });

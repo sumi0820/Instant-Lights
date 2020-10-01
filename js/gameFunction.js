@@ -20,12 +20,12 @@ const playerVsEnemy = (enemy) => {
     gameLose();
     TweenMax.delayedCall(0.5, gameMusicStop);
 
-    TweenMax.fromTo(
+    tl.fromTo(
       "#main",
-      0.05,
-      { x: -1 },
+      0.02,
+      { x: -5 },
       {
-        x: 1,
+        x: 5,
         repeat: 10,
         yoyo: true,
         ease: Sine.easeInOut,
@@ -34,12 +34,12 @@ const playerVsEnemy = (enemy) => {
 
     cancelAnimationFrame(animationId);
     player.stopChangeBackground();
-    TweenMax.to("#main", 2, { backgroundColor: "#f6f6f6" });
-    TweenMax.delayedCall(5, gameEndMusic());
+    tl.to("#main", 2, { backgroundColor: " #f6f6f6" });
+    TweenMax.delayedCall(1.5, gameEndMusic);
     TweenMax.delayedCall(0.01, clearCanvas);
     TweenMax.delayedCall(2, gameEndAnimation);
 
-    console.log("game end");
+    console.log(`Game Over. Score: ${player.score}`);
   }
 };
 
@@ -80,4 +80,35 @@ const enemyVsShield = (enemy, enemiesIndex) => {
       }, 0);
     }
   }
+};
+
+const restartAction = (scoreScreen, bg) => {
+  scoreScreen.classList.remove("gameEnd");
+  bg.parentNode.removeChild(bg);
+
+
+tl.from(".slider", { y: "100%", duration: 1.5, delay: 0.5 });
+tl.from("#main", { y: "100%", duration: 1 }, "-=2");
+TweenMax.to("#main", 0.8, { backgroundColor: "#1A1A2E" });
+
+
+  // Initializing
+  player.score = 0;
+  player.overKill = false;
+  player.specialEffect = false;
+  player.x = canvasG.width / 2;
+  player.y = canvasG.height / 2;
+  difficulty = 1;
+  end = false;
+  beams = [];
+  enemies = [];
+
+  // Restart action
+  endMusic.pause();
+  endMusic.currentTime = 0;
+  transitionSe();
+  TweenMax.delayedCall(2, gameMusic);
+  TweenMax.delayedCall(1, animateGame);
+  TweenMax.delayedCall(2, spawnEnemies);
+  player.changeBackground();
 };

@@ -7,7 +7,6 @@ let score = 0;
 const player = new Player(playerX, playerY, playerRadius, "#f6f6f6", score);
 
 // BEAM //
-const beam = new Beam(canvasG.width / 2, canvasG.height / 2, 2, "red", 1);
 let beams = [];
 
 // ENEMY //
@@ -53,7 +52,7 @@ const spawnEnemies = () => {
     enemies.push(
       new Enemy(enemyX, enemyY, enemyRadius, enemyColor, enemyVelocity)
     );
-    console.log(enemies);
+
     if (end) {
       clearInterval(intervalId);
     }

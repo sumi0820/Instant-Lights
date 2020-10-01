@@ -45,7 +45,6 @@ addEventListener("resize", () => {
 
 
 canvas.addEventListener("click", () => {
-  const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
 
   setTimeout(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -65,4 +64,6 @@ canvas.addEventListener("click", () => {
   TweenMax.delayedCall(1, difficultyHandler);
   TweenMax.delayedCall(1, spawnEnemies);
   player.changeBackground();
+  TweenMax.to("#main", 3, { backgroundColor: "#1A1A2E" });
+
 });
