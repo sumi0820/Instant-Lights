@@ -57,7 +57,7 @@ canvas.addEventListener("click", () => {
   TweenMax.to("#main", 3, { backgroundColor: "#1A1A2E" });
   splashBgm.pause();
   splashBgm.currentTime = 0;
-  transitionSe();
+  transition();
 
   TweenMax.delayedCall(2, gameMusic);
   TweenMax.delayedCall(1, animateGame);

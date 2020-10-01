@@ -40,7 +40,7 @@ const explosion3 = () => {
 let transition = new Audio();
 transition.src = "./audio/transition.mp3";
 
-const transitionSe = () => {
+const transition = () => {
   transition.play();
   transition.volume = 0.5;
 };

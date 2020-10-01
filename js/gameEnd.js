@@ -1,4 +1,4 @@
-const gameEndAnimation = () => {
+const animateGameEnd = () => {
   const scoreScreen = document.querySelector("#score");
   scoreScreen.classList.add("gameEnd");
   const bg = document.createElement("div");

@@ -35,9 +35,9 @@ const playerVsEnemy = (enemy) => {
     cancelAnimationFrame(animationId);
     player.stopChangeBackground();
     tl.to("#main", 2, { backgroundColor: " #f6f6f6" });
-    TweenMax.delayedCall(1.5, gameEndMusic);
+    TweenMax.delayedCall(0.8, gameEndMusic);
     TweenMax.delayedCall(0.01, clearCanvas);
-    TweenMax.delayedCall(2, gameEndAnimation);
+    TweenMax.delayedCall(2, animateGameEnd);
 
     console.log(`Game Over. Score: ${player.score}`);
   }
@@ -106,7 +106,7 @@ TweenMax.to("#main", 3, { backgroundColor: "#1A1A2E" });
   // Restart action
   endMusic.pause();
   endMusic.currentTime = 0;
-  transitionSe();
+  transition();
   TweenMax.delayedCall(2, gameMusic);
   TweenMax.delayedCall(1, animateGame);
   TweenMax.delayedCall(2, spawnEnemies);
