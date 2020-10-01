@@ -40,15 +40,15 @@ function particleEvent(obj) {
       targets: particles,
       x: function (particle) {
         return (
-          particle.x + anime.random(particle.radius + 15, -particle.radius + 15)
+          particle.x + anime.random(particle.radius + 20, -particle.radius + 20)
         );
       },
       y: function (particle) {
         return (
           particle.y +
           anime.random(
-            particle.radius * 1.15 + 15,
-            -particle.radius * 1.15 + 15
+            particle.radius * 1.15 + 20,
+            -particle.radius * 1.15 + 20
           )
         );
       },
