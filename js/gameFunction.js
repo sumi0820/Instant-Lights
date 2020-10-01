@@ -89,7 +89,7 @@ const restartAction = (scoreScreen, bg) => {
 
 tl.from(".slider", { y: "100%", duration: 1.5, delay: 0.5 });
 tl.from("#main", { y: "100%", duration: 1 }, "-=2");
-TweenMax.to("#main", 0.8, { backgroundColor: "#1A1A2E" });
+TweenMax.to("#main", 3, { backgroundColor: "#1A1A2E" });
 
 
   // Initializing
