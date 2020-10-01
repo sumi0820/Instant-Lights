@@ -106,7 +106,7 @@ TweenMax.to("#main", 3, { backgroundColor: "#1A1A2E" });
   // Restart action
   endMusic.pause();
   endMusic.currentTime = 0;
-  transition();
+  transitionSe();
   TweenMax.delayedCall(2, gameMusic);
   TweenMax.delayedCall(1, animateGame);
   TweenMax.delayedCall(2, spawnEnemies);
