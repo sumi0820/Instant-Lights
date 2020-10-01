@@ -13,7 +13,7 @@ const animateGameEnd = () => {
     <div> <button type="button" class="btn btn-info restart">Restart</button></div>
     `;
   scoreScreen.appendChild(bg);
-  tl.from(".gameEnd", 1.4, { autoAlpha: 0, y: 100 });
+  TweenMax.from(".gameEnd", 1.4, { autoAlpha: 0, y: 100 });
 
   const btn = document.querySelector(".restart");
   btn.addEventListener("click", (event) => {

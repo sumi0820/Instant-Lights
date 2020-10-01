@@ -34,7 +34,7 @@ const playerVsEnemy = (enemy) => {
 
     cancelAnimationFrame(animationId);
     player.stopChangeBackground();
-    tl.to("#main", 2, { backgroundColor: " #f6f6f6" });
+    TweenMax.to("#main", 2, { backgroundColor: " #f6f6f6" });
     TweenMax.delayedCall(0.8, gameEndMusic);
     TweenMax.delayedCall(0.01, clearCanvas);
     TweenMax.delayedCall(2, animateGameEnd);

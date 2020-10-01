@@ -115,11 +115,11 @@ Definition of the different states and their transition (transition functions)
 
 ### Git
 
-URls for the project repo and deploy
+URls for the project repo and deploy  
 [Link Repo](https://github.com/sumi0820/instant-lights)
 [Link Deploy](https://sumi0820.github.io/Instant-Lights/)
 
 ### Slides
 
-URls for the project presentation (slides)
+URls for the project presentation (slides)  
 [Link Slides.com](https://docs.google.com/presentation/d/1aeFPQgqq2rr4jJnX84WPE8iizxGGMHAolKzK1uwA9Io/edit?usp=sharing)
