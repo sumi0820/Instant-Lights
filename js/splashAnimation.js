@@ -1,12 +1,5 @@
-// Event Listeners
-addEventListener("resize", () => {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
 
-  init();
-});
-
-// Implementation
+//============INSTANCE CREATION============//
 let ball;
 let balls = [];
 function init() {
@@ -16,12 +9,11 @@ function init() {
     let ballsX = randomNum(canvas.width, -1);
     let ballsY = randomNum(canvas.height - ballsRadius, -1);
     let ballsDY = randomNum(2, -2);
-    balls.push(new Ball(ballsX, ballsY, ballsDY, ballsRadius, randomColor()));
+    balls.push(new Ball(ballsX, ballsY, ballsDY, ballsRadius, randomColor(colors)));
   }
 }
 
-
-// Animation Loop
+//============ANIMATION============//
 let animationSplashId;
 
 function animateSplash() {
@@ -34,19 +26,26 @@ function animateSplash() {
   }
 }
 
-TweenMax.delayedCall(0.5, splashMusic);
-
-init();
-animateSplash();
-
 function loop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   requestAnimationFrame(loop);
 }
 
+TweenMax.delayedCall(0.5, splashMusic);
+init();
+animateSplash();
+
+//============EVENT HANDLER============//
+addEventListener("resize", () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
+  init();
+});
+
+
 canvas.addEventListener("click", () => {
   const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
-
 
   setTimeout(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -55,15 +54,15 @@ canvas.addEventListener("click", () => {
 
   tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
   tl.to("#splash", { y: "-100%", duration: 1 }, "-=2");
-  
-  TweenMax.to("#main", 3, { backgroundColor: '#1A1A2E' });
+
+  TweenMax.to("#main", 3, { backgroundColor: "#1A1A2E" });
   splashBgm.pause();
   splashBgm.currentTime = 0;
-  transitionSe()
+  transitionSe();
 
   TweenMax.delayedCall(2, gameMusic);
   TweenMax.delayedCall(1, animateGame);
   TweenMax.delayedCall(1, difficultyHandler);
   TweenMax.delayedCall(1, spawnEnemies);
-  player.changeBackground()
+  player.changeBackground();
 });

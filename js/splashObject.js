@@ -1,4 +1,3 @@
-// Ball
 let gravity = 0.2;
 let friction = 0.99;
 
@@ -48,7 +47,7 @@ const title = () => {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(
-      "Press WASD to move. Point and click to shoot.",
+      "Press WASD/arrows to move. Point and click to shoot.",
       canvas.width / 2,
       canvas.height / 2 + 30
     );

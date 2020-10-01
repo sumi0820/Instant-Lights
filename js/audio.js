@@ -6,6 +6,7 @@ const splashMusic = () => {
   splashBgm.volume = 0.2;
 };
 //==================================//
+
 let particleSoundEffect = new Audio();
 particleSoundEffect.src = "./audio/explosion.mp3";
 
