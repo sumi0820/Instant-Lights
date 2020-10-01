@@ -17,7 +17,7 @@ class Player {
     ctxG.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     ctxG.fillStyle = this.color;
     ctxG.shadowColor = "#f6f6f6";
-    ctxG.shadowBlur = 30;
+    ctxG.shadowBlur = 20;
     ctxG.fill();
     ctxG.closePath();
   }
