@@ -24,12 +24,12 @@ class Particle {
 let animations = [];
 let particles = [];
 
-function particleEvent(enemy) {
+function particleEvent(obj) {
   setTimeout(() => {
     for (let i = 0; i < 15; i++) {
       let particle = new Particle(
-        enemy.x,
-        enemy.y,
+        obj.x,
+        obj.y,
         anime.random(24, 60),
         randomColor(particleColors)
       );

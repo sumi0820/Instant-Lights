@@ -16,21 +16,10 @@ const playerVsEnemy = (enemy) => {
 
   if (distPlayerVsEnemy - enemy.radius - player.radius < 1) {
     end = true;
+
     animations = [];
     gameLose();
     TweenMax.delayedCall(0.5, gameMusicStop);
-
-    tl.fromTo(
-      "#main",
-      0.02,
-      { x: -5 },
-      {
-        x: 5,
-        repeat: 10,
-        yoyo: true,
-        ease: Sine.easeInOut,
-      }
-    );
 
     cancelAnimationFrame(animationId);
     player.stopChangeBackground();
