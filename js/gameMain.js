@@ -15,7 +15,7 @@ let end = false;
 
 const difficultyHandler = () => {
   let difficultyCounter = setInterval(() => {
-    difficulty++;
+    difficulty = +2;
     if (end) {
       clearInterval(difficultyCounter);
     }
@@ -40,13 +40,11 @@ const spawnEnemies = () => {
 
     const enemyColor = randomColor(colors);
 
-    // Get angle(radian) of the point where the user click
     const angle = Math.atan2(player.y - enemyY, player.x - enemyX);
 
-    // Get velocity based on the angle
     const enemyVelocity = {
-      x: Math.cos(angle) * randomNum(difficulty, 1),
-      y: Math.sin(angle) * randomNum(difficulty, 1),
+      x: Math.cos(angle) * randomNum(difficulty, 2),
+      y: Math.sin(angle) * randomNum(difficulty, 2),
     };
 
     enemies.push(
