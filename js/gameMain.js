@@ -43,8 +43,8 @@ const spawnEnemies = () => {
     const angle = Math.atan2(player.y - enemyY, player.x - enemyX);
 
     const enemyVelocity = {
-      x: Math.cos(angle) * randomNum(difficulty, 2),
-      y: Math.sin(angle) * randomNum(difficulty, 2),
+      x: Math.cos(angle) * randomNum(difficulty, 1),
+      y: Math.sin(angle) * randomNum(difficulty, 1),
     };
 
     enemies.push(
