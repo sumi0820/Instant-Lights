@@ -38,7 +38,7 @@ const bgColors = [
   "#006a71",
   "#7d0633",
   "#ffc93c",
-  "#ff4b5c",
+  "#ED8684",
 ];
 
 const randomNum = (max, min) =>
