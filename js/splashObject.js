@@ -34,14 +34,14 @@ class Ball {
 const title = () => {
   const FONT_NAME = "Oswald-Regular";
   function renderText() {
-    ctx.font = `48px "${FONT_NAME}"`;
+    ctx.font = `52px "${FONT_NAME}"`;
     ctx.fillStyle = "#f6f6f6";
 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("Instant Lights", canvas.width / 2, canvas.height / 2 - 10);
 
-    ctx.font = `16px "${FONT_NAME}"`;
+    ctx.font = `20px "${FONT_NAME}"`;
     ctx.fillStyle = "#f6f6f6";
 
     ctx.textAlign = "center";
