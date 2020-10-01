@@ -70,7 +70,7 @@ MVP definition, deliverables.
 - explosion(){}
 - explosion2(){}
 - explosion3(){}
-- transitionSe(){}
+- transition(){}
 - gameLose(){}
 - gameEndMusic(){}
 
@@ -79,7 +79,7 @@ MVP definition, deliverables.
 - randomNum(){}
 - randomColor(){}
 - clearCanvas(){}
-- removeObject(){}
+- removeObj(){}
 
 
 ## States y States Transitions
@@ -88,7 +88,7 @@ Definition of the different states and their transition (transition functions)
 
 - splashScreen
 - gameScreen
-- gameoverScreen
+- gameEndScreen
 
 ## Task
 - Build splash
@@ -96,9 +96,12 @@ Definition of the different states and their transition (transition functions)
 - Build Beam
 - Build Enemy
 - Create spawnEnemies
+- Animate game
 - Build gameEnd
 - Build DOM
-
+- Add effects(particle, ripple)
+- Add audio
+- Polish UI
 
 ## Links
 

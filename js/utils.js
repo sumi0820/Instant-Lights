@@ -48,6 +48,6 @@ const randomColor = (colorPalette) =>
   colorPalette[Math.floor(Math.random() * colorPalette.length)];
 
 const clearCanvas = () => ctxG.clearRect(0, 0, canvasG.width, canvasG.height);
-const removeObject = (objArr, index) => objArr.splice(index, 1);
+const removeObj = (objArr, index) => objArr.splice(index, 1);
 let dist = (objA, objB) => Math.hypot(objA.x - objB.x, objA.y - objB.y);
 const tl = gsap.timeline({ defaults: { ease: "power1.out" } });

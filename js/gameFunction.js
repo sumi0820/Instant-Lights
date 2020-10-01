@@ -6,7 +6,7 @@ const cleanUpObj = (obj, objIndex, objArr) => {
     obj.y > canvasG.height + 50
   ) {
     setTimeout(() => {
-      removeObject(objArr, objIndex);
+      removeObj(objArr, objIndex);
     }, 0);
   }
 };
@@ -53,15 +53,15 @@ const enemyVsBeam = (enemy, enemiesIndex) => {
           radius: enemy.radius - 5,
         });
         setTimeout(() => {
-          removeObject(beams, beamsIndex);
+          removeObj(beams, beamsIndex);
           player.score++;
         }, 0);
       } else {
         setTimeout(() => {
           particleEvent(enemy);
           explosion();
-          removeObject(enemies, enemiesIndex);
-          removeObject(beams, beamsIndex);
+          removeObj(enemies, enemiesIndex);
+          removeObj(beams, beamsIndex);
           player.score = player.score + 10;
         }, 0);
       }
@@ -75,7 +75,7 @@ const enemyVsShield = (enemy, enemiesIndex) => {
     if (distPlayerVsEnemy - enemy.radius - (player.radius + 100) < 1) {
       setTimeout(() => {
         rippleEvent(enemy);
-        removeObject(enemies, enemiesIndex);
+        removeObj(enemies, enemiesIndex);
         player.score = player.score + 10;
       }, 0);
     }
