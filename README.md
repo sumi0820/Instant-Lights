@@ -1,8 +1,20 @@
 # Instant Lights
 
+![Main](/style/img/main.png)
+
 ## Description
 
-Instant Lights is a simple shooting game.
+Instant Lights is a simple shooting game.  
+
+[Play Now](https://sumi0820.github.io/instant-lights/)
+
+## How to play  
+
+Move with arrow/wasd keys, and shoot with left click.  
+You can protect yourself with right click, and eliminate with shift key. (Yet, these commands need time to recharge.)  
+There's no specific ending, but you will definitely be addicted once you start playing. 
+
+
 
 ## MVP (DOM - CANVAS)
 
@@ -117,7 +129,7 @@ Definition of the different states and their transition (transition functions)
 
 URls for the project repo and deploy  
 [Link Repo](https://github.com/sumi0820/instant-lights)
-[Link Deploy](https://sumi0820.github.io/Instant-Lights/)
+[Link Deploy](https://sumi0820.github.io/instant-lights/)
 
 ### Slides
 
